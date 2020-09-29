@@ -7,7 +7,7 @@ body_parser.urlencoded({extended : true});
 
 //Entry Point
 app.get("/",function(req,res){
-  res.send("This is first page");
+  res.sendFile(__dirname+"//frontend//public//index.html");
 });
 
 app.post("/",function(req,res){
