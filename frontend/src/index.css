@@ -2,6 +2,7 @@
     grid-template-columns: 20% 80%;
     display: grid;
     --prim-color:#264e70;
+    --card-color:#cae1ff;
     color: white;
     margin: -8px;
 }
@@ -19,4 +20,12 @@ button{
 button:hover{
     transition: all 0.3s;
     background: #9c3d29;
+}
+
+.page-container{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    grid-column: 2;
 }

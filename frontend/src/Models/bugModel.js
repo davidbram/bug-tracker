@@ -1,6 +1,7 @@
 export default bug;
 
 function bug(bug){
+    // eslint-disable-next-line
     if(bug != undefined){
         this._id = bug._id;
         this.name = bug.name;
