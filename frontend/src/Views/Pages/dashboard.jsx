@@ -32,9 +32,9 @@ export default() =>{
     )
     return(
         <div className="page-container">
-            <Card priority='1' count="10" clicked={redirect}/>
-            <Card priority='2' count="10" clicked={redirect}/>
-            <Card priority='3' count="10" clicked={redirect}/>
+            <Card priority='1' count={highCount.length} clicked={redirect}/>
+            <Card priority='2' count={midCount.length} clicked={redirect}/>
+            <Card priority='3' count={lowCount.length} clicked={redirect}/>
         </div>
         
     );
