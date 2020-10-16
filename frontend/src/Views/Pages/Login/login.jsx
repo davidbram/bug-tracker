@@ -28,8 +28,8 @@ export default ()=>{
                 <h1>Login:</h1>
                 <input name="name" placeholder="Name" onChange={inputChanged} value={formInput.name}/>
                 <input name="password" type="password" placeholder="Password" onChange={inputChanged} value={formInput.password}/>
-                <button type="submit" onClick={submit}>Login</button>
-            </form>
+                <button type="submit" className="login-btn" onClick={submit}>Login</button>
+            </form> 
         </div>
     )
 }
