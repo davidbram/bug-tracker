@@ -3,9 +3,9 @@ import ViewSection from './component/bugViewSection';
 import './bugView.css';
 import BugModel from '../../../Models/bugModel';
 import {useDispatch} from 'react-redux';
-import {markComplete} from '../../../Controllers/Redux/bugSlice'
-import EditPanel from '../edit delete/editPanel'
-import EditBug from '../Bug Create/bugForm'
+import {markComplete} from '../../../Controllers/Redux/bugSlice';
+import EditPanel from '../edit delete/editPanel';
+import EditBug from '../Bug Create/bugForm';
 
 export default (props)=>{
     const dispatch = useDispatch();
@@ -13,7 +13,7 @@ export default (props)=>{
 
     const [displayEdit,setDisplayEdit] = useState(false);
     function editClicked(){
-        setDisplayEdit(!displayEdit)
+        setDisplayEdit(!displayEdit);
     }
 
     function deleteClicked(){

@@ -1,9 +1,9 @@
-import React,{useState} from 'react'
-import './bugForm.css'
-import BugModel from '../../../Models/bugModel'
+import React,{useState} from 'react';
+import './bugForm.css';
+import BugModel from '../../../Models/bugModel';
 
 export default (props)=>{
-	const [bugObject,setBugObject] = useState(new BugModel(props.bug))
+	const [bugObject,setBugObject] = useState(new BugModel(props.bug));
 	
 	function inputChanged(e){
 		setBugObject({

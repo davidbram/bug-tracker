@@ -21,14 +21,14 @@ export default() =>{
     }
 
     useEffect(()=>{
-        dispatch(getBugs)
+        dispatch(getBugs());
     },[bugs == undefined]
     )
     return(
         <div className="page-container">
-            <Card priority='1' count="10" />
-            <Card priority='2' count="10"/>
-            <Card priority='3' count="10"/>
+            <Card priority='1' count={highCount.length} />
+            <Card priority='2' count={midCount.length}/>
+            <Card priority='3' count={lowCount.length}/>
         </div>
         
     );
