@@ -1,6 +1,8 @@
 require('dotenv').config();
 
+
 const express = require('express');
+
 
 // const _ = require('lodash');
 
@@ -12,6 +14,9 @@ const bodyParser = require('body-parser');
 
 const app = express();
 
+const cors = require('cors')
+
+app.use(cors())
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(express.static('public'));
@@ -51,6 +56,7 @@ app.route('/bug')
 })
 
 .post((req, res) => {
+  console.log(req.name);
   const bug = new Bug({
     name: req.body.name,
     details: req.body.details,
