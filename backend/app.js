@@ -13,7 +13,7 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 
 const app = express();
-
+app.use(bodyParser.json())
 const cors = require('cors')
 
 app.use(cors())
@@ -56,7 +56,7 @@ app.route('/bug')
 })
 
 .post((req, res) => {
-  console.log(req.name);
+  //console.log(req);
   const bug = new Bug({
     name: req.body.name,
     details: req.body.details,
@@ -68,7 +68,7 @@ app.route('/bug')
     time: req.body.time,
     status: req.body.status,
   });
-
+  //console.log(bug);
   bug.save((err) => {
     if (!err) {
       res.send('Successfully saved bug in DB');

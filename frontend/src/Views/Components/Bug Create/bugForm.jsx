@@ -17,7 +17,7 @@ export default (props)=>{
 	
 	function submitHandler(e){
 		e.preventDefault()
-		console.log(bugObject);
+		//console.log(bugObject);
 		axios
 			.post("http://localhost:3001/bug",bugObject)
 			.then(response => {
