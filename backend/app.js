@@ -56,6 +56,7 @@ app.route('/bug')
 })
 
 .post((req, res) => {
+  var d = new Date()
   //console.log(req);
   const bug = new Bug({
     name: req.body.name,
@@ -65,8 +66,8 @@ app.route('/bug')
     priority: req.body.priority,
     assigned: req.body.assigned,
     creator: req.body.creator,
-    time: req.body.time,
-    status: req.body.status,
+    time: d.toDateString()+" "+d.getHours()+" "+d.getMinutes(),
+    status: "open",
   });
   //console.log(bug);
   bug.save((err) => {
