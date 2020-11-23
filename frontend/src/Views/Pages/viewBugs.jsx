@@ -3,12 +3,14 @@ import {useDispatch,useSelector} from 'react-redux';
 import {getBugs} from '../../Controllers/Redux/bugSlice';
 import BugCard from '../Components/Bug Card/bugCard';
 import BugView from '../Components/Bug view/bugView.jsx';
+import bugModel from '../../Models/bugModel';
 import axios from "axios";
 
 
 
 export default()=>{
-    var bugs1
+    const [bugs1, setBugs1] = useState([]);
+
     const [DISPLAY_BUG, SET_DISPLAY_BUG]=useState({
         name:"",
         isDisplayed:false
@@ -27,19 +29,23 @@ export default()=>{
         });
 
     }
-    axios.get("http://localhost:3001/bug")
+
+    axios.get("/api/bug")
         .then((response) => {
-            
-            console.log(bugs);
-            bugs1 = response.data
-            console.log(bugs1);
+            let data = [];
+            response.data.forEach(b => data.push(new bugModel(b)));
+            let sorted = data.sort((a,b)=>{return a.priority-b.priority;});
+            setBugs1(sorted);
+            // console.log(bugs1);
           });
+
+
     return(
     <div className="page-container">
-        {bugs.map((bug,key)=>(
+        {bugs1.map((bug,key)=>(
             <BugCard key ={key} bug={bug} clicked={BugClicked} />
             ))}
-        {DISPLAY_BUG.isDisplayed && <BugView clicked={BugClicked} bug={bugs.filter((bug) => bug.name == DISPLAY_BUG.name)[0]} />}
+        {DISPLAY_BUG.isDisplayed && <BugView clicked={BugClicked} bug={bugs1.filter((bug) => bug.name == DISPLAY_BUG.name)[0]} />}
     </div> 
 
     )
