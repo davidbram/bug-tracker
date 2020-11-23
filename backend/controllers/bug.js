@@ -52,7 +52,7 @@ exports.deleteAllBugs = (req, res) => {
 // / crud operations on specific bug ///
 
 exports.findSpecificBug = (req, res) => {
-  Bug.findOne({ name: req.params.bugName }, (err, foundBug) => {
+  Bug.findOne({ _id: req.params.bugId }, (err, foundBug) => {
     if (!err) {
       if (foundBug) {
         res.send(foundBug);
@@ -67,7 +67,7 @@ exports.findSpecificBug = (req, res) => {
 
 exports.fullModifyBug = (req, res) => {
   Bug.update(
-    { name: req.params.bugName },
+    { _id: req.params.bugId },
     {
       name: req.body.name,
       details: req.body.details,
@@ -93,7 +93,7 @@ exports.fullModifyBug = (req, res) => {
 
 exports.partialModifyBug = (req, res) => {
   Bug.update(
-    { name: req.params.bugName },
+    { _id: req.params.bugId },
     { $set: req.body },
     (err) => {
       if (!err) {
@@ -107,7 +107,7 @@ exports.partialModifyBug = (req, res) => {
 
 exports.deleteSpecificBug = (req, res) => {
   Bug.deleteOne(
-  { name: req.params.bugName },
+  { _id: req.params.bugId },
   (err) => {
     if (!err) {
       res.send(`${req.params.bugName} bug has been deleted successfully`);
