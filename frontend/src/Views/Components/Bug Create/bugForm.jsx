@@ -19,16 +19,16 @@ export default (props)=>{
 		e.preventDefault()
 		//console.log(bugObject);
 		if (props.title == "Edit Bug") {
-			let config = {
-				headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
-			  }
-			axios.patch(`/api/bug/${bugObject._id}`,  bugObject, config)
-			.then(response => {
-				console.log(response);
-			})
-			.catch(error => {
-				console.log(error);
-			});
+			// let config = {
+			// 	headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+			//   };
+			// axios.patch(`/api/bug/${bugObject._id}`,  bugObject, config)
+			// .then(response => {
+			// 	console.log(response);
+			// })
+			// .catch(error => {
+			// 	console.log(error);
+			// });
 		} else {
 			axios
 			.post("/api/bug",bugObject)

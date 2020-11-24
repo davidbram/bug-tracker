@@ -18,8 +18,10 @@ export default (props)=>{
         setDisplayEdit(!displayEdit);
     }
 
-    function deleteClicked(){
-
+    function deleteClicked(bugId){
+        axios.delete(`/api/bug/${bugId}`)
+        .then(res => console.log(res))
+        .catch(err => console.log(err));
     }
 
     function handleChange(){
@@ -28,7 +30,7 @@ export default (props)=>{
     return(
         <>
         <div className='bug-view'>
-            <EditPanel editClicked={editClicked} deleteClicked={deleteClicked} />
+            <EditPanel editClicked={editClicked} deleteClicked={deleteClicked} bugId={bug._id} />
             <button onClick={props.clicked} className='close-btn'>Close</button>
             <h1>{bug.name}</h1>
             <ViewSection name='details' title='Details' info={bug.details} onEdit={handleChange} />
