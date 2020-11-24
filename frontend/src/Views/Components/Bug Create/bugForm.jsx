@@ -18,15 +18,29 @@ export default (props)=>{
 	function submitHandler(e){
 		e.preventDefault()
 		//console.log(bugObject);
-		axios
-			.post("http://localhost:3001/bug",bugObject)
+		if (props.title == "Edit Bug") {
+			let config = {
+				headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+			  }
+			axios.patch(`/api/bug/${bugObject._id}`,  bugObject, config)
 			.then(response => {
 				console.log(response);
 			})
 			.catch(error => {
 				console.log(error);
+			});
+		} else {
+			axios
+			.post("/api/bug",bugObject)
+			.then(response => {
+				console.log(response);
 			})
+			.catch(error => {
+				console.log(error);
+			});
+		}
 	}
+
 
 	return(
 		<div className='bug-create'>
