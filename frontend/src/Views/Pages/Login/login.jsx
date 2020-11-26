@@ -29,7 +29,8 @@ export default ()=>{
                 <input name="name" placeholder="Name" onChange={inputChanged} value={formInput.name}/>
                 <input name="password" type="password" placeholder="Password" onChange={inputChanged} value={formInput.password}/>
                 <button type="submit" className="login-btn" onClick={submit}>Login</button>
-            </form> 
+                <p>New User ? <a href="/signup">Click here</a></p>
+            </form>
         </div>
     )
 }
