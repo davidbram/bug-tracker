@@ -1,16 +1,19 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import {useDispatch,useSelector} from 'react-redux';
+import {useHistory} from 'react-router-dom';
 
 import {signOut} from '../../Controllers/Redux/authSlice';
 import './sidebar.css';
 
 export default ()=>{
+    const history = useHistory();
     const dispatch = useDispatch();
     const {auth} = useSelector(state => state);
 
     function SignOut(){
         dispatch(signOut());
+        history.push('/');
     }
     return(
           <div className="sidebar">

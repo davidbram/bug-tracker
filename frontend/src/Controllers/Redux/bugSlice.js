@@ -1,7 +1,8 @@
 import {createSlice} from '@reduxjs/toolkit';
 import { retrieveBugs } from '../bugController';
+// import axios from 'axios';
+// import bugModel from '../../Models/bugModel';
 
-console.log(retrieveBugs());
 const slice = createSlice({
     name:"bug",
     initialState:[],

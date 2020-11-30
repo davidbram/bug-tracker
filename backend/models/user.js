@@ -10,10 +10,6 @@ const userSchema = new mongoose.Schema({
   username: String,
   password: String,
   secret: String,
-  bugs: [{
-    type: ObjectId,
-    ref: 'Bug',
-  }],
 });
 
 userSchema.plugin(passportLocalMongoose);

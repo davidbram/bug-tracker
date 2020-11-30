@@ -12,14 +12,14 @@ export default() =>{
     let highCount = 0;
     let lowCount = 0;
 
-    if(bugs != undefined){
+    if(bugs !== undefined){
         highCount = filterBugs(1);
         midCount = filterBugs(2);
         lowCount = filterBugs(3);
     }
 
     function filterBugs(priority){
-        return bugs.filter((bug)=>{return bug.priority == priority});
+        return bugs.filter((bug)=>{return bug.priority === priority});
     }
 
     function redirect(){
@@ -28,7 +28,7 @@ export default() =>{
 
     useEffect(()=>{
         dispatch(getBugs());
-    },[bugs == undefined]
+    },[bugs === undefined]
     )
     return(
         <div className="page-container">

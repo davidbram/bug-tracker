@@ -35,6 +35,10 @@
     padding-left: 5px;
 }
  .login-btn{
-     margin: 20px;
+     margin: 1.43rem;
+ }
+
+ .loginBG p{
+     display: block;
  }
 

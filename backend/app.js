@@ -41,31 +41,47 @@ const bugRoutes = require('./routes/bug');
 // app.use('/api', authRoutes);
 app.use('/api', bugRoutes);
 
+passport.use(User.createStrategy());
+passport.serializeUser((user, done) => {
+  done(null, user.id);
+});
+
+passport.deserializeUser((id, done) => {
+  User.findById(id, (err, user) => {
+    done(err, user);
+  });
+});
+
 
 router.post('/register', (req, res) => {
   User.register({ username: req.body.username }, req.body.password, (err, user) => {
     if (err) {
+      console.log(err);
       res.send(err);
     } else {
       passport.authenticate('local')(req, res, () => {
         res.send('You have been successfully registered');
+        console.log('User created');
         console.log(user);
       });
     }
   });
 });
 
-router.post('/login', (req, res) => {
+router.post('/login', (req, res, next) => {
   const user = new User({
     username: req.body.username,
     password: req.body.password,
   });
   req.login(user, (err) => {
     if (err) {
-      res.send(err);
+      console.log(err);
+      return next(err);
     } else {
       passport.authenticate('local')(req, res, () => {
+        console.log('inside authenticate');
         res.send('You are logged in');
+        // res.redirect('/');
       });
     }
   });
