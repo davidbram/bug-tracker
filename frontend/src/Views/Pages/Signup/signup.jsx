@@ -1,6 +1,7 @@
 import {createUser} from "../../../Controllers/Redux/authSlice";
 import {useDispatch} from 'react-redux';
 import React, { useState } from "react";
+import "./signup.css";
 
 function Signup(){
 

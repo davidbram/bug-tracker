@@ -36,10 +36,13 @@ mongoose.set('useCreateIndex', true);
 // Routes
 // const authRoutes = require('./routes/auth');
 const bugRoutes = require('./routes/bug');
+const projectRoutes = require('./routes/project');
 
 // Routes
 // app.use('/api', authRoutes);
 app.use('/api', bugRoutes);
+app.use('/api', projectRoutes);
+
 
 passport.use(User.createStrategy());
 passport.serializeUser((user, done) => {

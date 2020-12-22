@@ -7,21 +7,18 @@ import ViewBugPage from './Views/Pages/viewBugs';
 import CreateBug from './Views/Components/Bug Create/bugForm';
 import Dashboard from '../src/Views/Pages/dashboard';
 import Signup from "../src/Views/Pages/Signup/signup";
-<<<<<<< HEAD
-=======
-import ViewProject from "./Views/Pages/Project/viewProject" 
->>>>>>> 8b3167a485836a47196e7774290361f45126fc7a
+import ViewProject from "./Views/Pages/Project/viewProject";
 
 function App() {
   const {auth} = useSelector(state => state);
   return (
     <Router>
-    {!auth.LoggedIn ? 
+    {!auth.LoggedIn ?
     <Switch>
       <Route path='/' exact><Login /></Route>
       <Route path='/login'><Login /></Route>
       <Route path='/signup'><Signup /></Route>
-    </Switch> : 
+    </Switch> :
       <>
       <Sidebar />
       <Switch>
@@ -29,7 +26,7 @@ function App() {
         <Route path="/viewbugs"><ViewBugPage /></Route>
         <Route path="/viewProject"><ViewProject></ViewProject></Route>
         <Router path="/create"><div className='page-container'><CreateBug title="Create Bug" /></div>
-        
+
         </Router>
       </Switch>
       </>

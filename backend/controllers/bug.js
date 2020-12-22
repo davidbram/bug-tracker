@@ -82,7 +82,7 @@ exports.fullModifyBug = (req, res) => {
     { overwrite: true },
     (err) => {
       if (!err) {
-        res.send(`${req.params.bugName} bug updated successfully `);
+        res.send(`${req.params.bugId} bug updated successfully `);
       } else {
         res.send(err);
       }
@@ -97,7 +97,7 @@ exports.partialModifyBug = (req, res) => {
     { $set: req.body },
     (err) => {
       if (!err) {
-        res.send(`${req.params.bugName} bug updated successfully `);
+        res.send(`${req.params.bugId} bug updated successfully `);
       } else {
         res.send(err);
       }
@@ -110,7 +110,7 @@ exports.deleteSpecificBug = (req, res) => {
   { _id: req.params.bugId },
   (err) => {
     if (!err) {
-      res.send(`${req.params.bugName} bug has been deleted successfully`);
+      res.send(`${req.params.bugId} bug has been deleted successfully`);
     } else {
       res.send(err);
     }
