@@ -4,6 +4,8 @@ import BugModel from '../../../Models/bugModel';
 import axios from "axios";
 import qs from "qs";
 
+
+
 // axios.defaults.headers.common = {
 // 	"Content-Type": "application/json"
 //   }

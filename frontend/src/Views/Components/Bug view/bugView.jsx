@@ -8,6 +8,9 @@ import EditPanel from '../edit delete/editPanel';
 import EditBug from '../Bug Create/bugForm';
 import axios from 'axios';
 
+import CloseIcon from '@material-ui/icons/Close';
+
+
 export default (props)=>{
     const dispatch = useDispatch();
     const bug = new BugModel(props.bug);
@@ -31,7 +34,7 @@ export default (props)=>{
         <>
         <div className='bug-view'>
             <EditPanel editClicked={editClicked} deleteClicked={deleteClicked} bugId={bug._id} />
-            <button onClick={props.clicked} className='close-btn'>Close</button>
+            <button onClick={props.clicked} className='close-btn'><CloseIcon /></button>
             <h1>{bug.name}</h1>
             <ViewSection name='details' title='Details' info={bug.details} onEdit={handleChange} />
             <ViewSection name='steps' title='Steps' info={bug.steps} onEdit={handleChange} />
