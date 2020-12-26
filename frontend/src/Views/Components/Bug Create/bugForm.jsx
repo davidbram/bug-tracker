@@ -4,7 +4,7 @@ import BugModel from '../../../Models/bugModel';
 import axios from "axios";
 import qs from "qs";
 
-
+import CloseIcon from '@material-ui/icons/Close';
 
 // axios.defaults.headers.common = {
 // 	"Content-Type": "application/json"
@@ -48,7 +48,7 @@ export default (props)=>{
 
 	return(
 		<div className='bug-create'>
-			{props.title === "Edit Bug" &&<button className='close-btn' onClick={props.close}>Close</button>}
+			{props.title === "Edit Bug" &&<button className='close-btn' onClick={props.close}><CloseIcon /></button>}
 			<h1>{props.title}</h1>
 			<form onSubmit={submitHandler}>
 				<label>Name:</label>

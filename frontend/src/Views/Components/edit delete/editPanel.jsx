@@ -1,5 +1,5 @@
-import React from 'react'
-import './editPanel.css'
+import React from 'react';
+import './editPanel.css';
 
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
