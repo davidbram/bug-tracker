@@ -107,6 +107,7 @@ exports.partialModifyBug = (req, res) => {
 
 
 exports.markComplete = (req, res) => {
+  //console.log(req.params.bugId);
   Bug.update(
     { _id: req.params.bugId },
     { $set: {status: 'completed'} },
@@ -114,7 +115,7 @@ exports.markComplete = (req, res) => {
       if (!err) {
         res.send(`${req.params.bugId} bug marked as complete `);
       } else {
-        res.send(err);
+        res.send("error");
       }
     },
   );

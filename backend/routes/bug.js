@@ -1,7 +1,7 @@
 const express = require('express');
 
 const router = express.Router();
-const { getAllBugs, createBug, deleteAllBugs, findSpecificBug, fullModifyBug, partialModifyBug, markComplete, deleteSpecificBug } = require('../controllers/bug');
+const {getAllBugs, createBug, deleteAllBugs, findSpecificBug, fullModifyBug, partialModifyBug, markComplete, deleteSpecificBug } = require('../controllers/bug');
 
 
 router.get('/bug', getAllBugs);

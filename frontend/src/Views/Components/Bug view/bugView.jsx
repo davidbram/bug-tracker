@@ -3,12 +3,13 @@ import ViewSection from './component/bugViewSection';
 import './bugView.css';
 import BugModel from '../../../Models/bugModel';
 import {useDispatch} from 'react-redux';
-import {markComplete} from '../../../Controllers/Redux/bugSlice';
+//import {markComplete} from '../../../Controllers/Redux/bugSlice';
 import EditPanel from '../edit delete/editPanel';
 import EditBug from '../Bug Create/bugForm';
 import axios from 'axios';
 
 import CloseIcon from '@material-ui/icons/Close';
+//import { markComplete } from '../../../../../backend/controllers/bug';
 
 
 export default (props)=>{
@@ -30,6 +31,13 @@ export default (props)=>{
     function handleChange(){
     }
 
+    function markComplete(bugId) {
+        console.log(bugId);
+        axios.patch(`/api/bug/complete/${bugId}`)
+        .then(res => console.log(res))
+        .catch(err => console.log(err));
+    }
+
     return(
         <>
         <div className='bug-view'>
@@ -42,9 +50,7 @@ export default (props)=>{
             <ViewSection name='creator' title='Creator' info={bug.creator} onEdit={handleChange} />
             <ViewSection name='version' title='App Version' info={bug.version} onEdit={handleChange} />
             <ViewSection name='time' title='Time Created' info={bug.time} onEdit={handleChange} />
-            <button onClick={()=>{
-                // dispatch(markComplete())
-                }}>Mark Complete</button>
+            <button onClick={() => markComplete(bug._id)}>Mark Complete</button>
         </div>
         {displayEdit && <EditBug title="Edit Bug" bug={bug} close={editClicked} />}
         </>
