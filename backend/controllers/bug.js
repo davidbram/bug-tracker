@@ -105,6 +105,21 @@ exports.partialModifyBug = (req, res) => {
   );
 };
 
+
+exports.markComplete = (req, res) => {
+  Bug.update(
+    { _id: req.params.bugId },
+    { $set: {status: 'completed'} },
+    (err) => {
+      if (!err) {
+        res.send(`${req.params.bugId} bug marked as complete `);
+      } else {
+        res.send(err);
+      }
+    },
+  );
+};
+
 exports.deleteSpecificBug = (req, res) => {
   Bug.deleteOne(
   { _id: req.params.bugId },
