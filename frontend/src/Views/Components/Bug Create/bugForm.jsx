@@ -13,10 +13,11 @@ export default (props)=>{
 	const [bugObject,setBugObject] = useState(new BugModel(props.bug));
 	
 	function inputChanged(e){
+		const {name, value} = e.target;
 		setBugObject({
 			...bugObject,
-			[e.target.name]:e.target.value
-		})
+			[name]:value
+		});
 	}
 	
 	function submitHandler(e){

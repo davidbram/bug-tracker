@@ -1,12 +1,15 @@
-import React,{useEffect} from 'react';
+import React,{useEffect, useState} from 'react';
 import Card from '../Components/Dashboard/card';
 import {useDispatch,useSelector} from 'react-redux';
 import {getBugs} from '../../Controllers/Redux/bugSlice';
 import {useHistory} from 'react-router-dom';
+import axios from 'axios';
+import bugModel from '../../Models/bugModel';
 
 export default() =>{
+    const [bugs, setBugs] = useState([]);
     const dispatch = useDispatch();
-    const bugs = useSelector(state=>state.bugs);
+    // const bugs = useSelector(state=>state.bugs);
     const browserHistory = useHistory();
     let midCount = 0;
     let highCount = 0;
@@ -26,10 +29,24 @@ export default() =>{
         browserHistory.push('/viewbugs');
     }
 
+    useEffect(() => {
+        axios.get("/api/bug")
+       .then((response) => {
+            const data = response.data.map(bug => new bugModel(bug));
+            setBugs(data);
+          });
+    }, []);
+
     useEffect(()=>{
-        dispatch(getBugs());
+        axios.get("/api/bug")
+       .then((response) => {
+            const data = response.data.map(bug => new bugModel(bug));
+            setBugs(data);
+          });
+        // dispatch(getBugs("http://localhost:3001/api/bug"));
     },[bugs === undefined]
-    )
+    );
+    
     return(
         <div className="page-container">
             <Card priority='1' count={highCount.length} clicked={redirect}/>
