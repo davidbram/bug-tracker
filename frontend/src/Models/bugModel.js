@@ -12,5 +12,6 @@ function bug(bug){
         this.assigned = bug.assigned;
         this.creator = bug.creator;
         this.time = bug.time;
+        this.status = bug.status
     }
 }
