@@ -29,8 +29,15 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
+// const DB_HOST = 'mongodb://localhost:27017/bugTrackerDB' 
+const DB_USERNAME = process.env.DB_USERNAME;
+const DB_PASSWORD = process.env.DB_PASSWORD;
+const DB_NAME = process.env.DB_NAME; 
+const DB_HOST = `mongodb+srv://${DB_USERNAME}:${DB_PASSWORD}@cluster0.b9dyt.mongodb.net/${DB_NAME}?retryWrites=true&w=majority`
+
+
 // mongodb connection
-mongoose.connect('mongodb://localhost:27017/bugTrackerDB', { useUnifiedTopology: true, useNewUrlParser: true });
+mongoose.connect(DB_HOST, { useUnifiedTopology: true, useNewUrlParser: true });
 mongoose.set('useCreateIndex', true);
 
 // Routes
