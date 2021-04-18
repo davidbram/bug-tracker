@@ -13,6 +13,9 @@
   },
   "author": "David Abraham",
   "license": "ISC",
+  "engines": {
+    "node": "14.15.0"
+  },
   "bugs": {
     "url": "https://github.com/davidbram/bug-tracker/issues"
   },
