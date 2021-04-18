@@ -11,7 +11,7 @@ import axios from 'axios';
 import CloseIcon from '@material-ui/icons/Close';
 //import { markComplete } from '../../../../../backend/controllers/bug';
 
-
+const BUG_TRACKER_SERVER = process.env.REACT_APP_BUG_TRACKER_SERVER;
 export default (props)=>{
     const dispatch = useDispatch();
     const bug = new BugModel(props.bug);
@@ -23,7 +23,7 @@ export default (props)=>{
     }
 
     function deleteClicked(bugId){
-        axios.delete(`/api/bug/${bugId}`)
+        axios.delete(BUG_TRACKER_SERVER + `/api/bug/${bugId}`)
         .then(res => console.log(res))
         .catch(err => console.log(err));
     }
@@ -33,7 +33,7 @@ export default (props)=>{
 
     function markComplete(bugId) {
         console.log(bugId);
-        axios.patch(`/api/bug/complete/${bugId}`)
+        axios.patch(BUG_TRACKER_SERVER + `/api/bug/complete/${bugId}`)
         .then(res => console.log(res))
         .catch(err => console.log(err));
     }

@@ -29,7 +29,7 @@ export function retrieveBugs(){
     //     time:"3:47",
     // }));
 
-    axios.get('http://localhost:3001/api/bug')
+    axios.get(process.env.REACT_APP_BUG_TRACKER_SERVER + '/api/bug')
     .then(res => {
         data = Object.assign([], data);
         res.data.forEach(bug => data.push(new bugModel(bug)));

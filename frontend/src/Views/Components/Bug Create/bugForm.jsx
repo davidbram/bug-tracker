@@ -6,9 +6,8 @@ import qs from "qs";
 
 import CloseIcon from '@material-ui/icons/Close';
 
-// axios.defaults.headers.common = {
-// 	"Content-Type": "application/json"
-//   }
+
+const BUG_TRACKER_SERVER = process.env.REACT_APP_BUG_TRACKER_SERVER
 export default (props)=>{
 	const [bugObject,setBugObject] = useState(new BugModel(props.bug));
 	
@@ -22,12 +21,11 @@ export default (props)=>{
 	
 	function submitHandler(e){
 		e.preventDefault()
-		//console.log(bugObject);
 		if (props.title === "Edit Bug") {
 			console.log("Bug is edited");
 			axios({
 				method: 'patch',
-				url: `/api/bug/${bugObject._id}`,
+				url: BUG_TRACKER_SERVER + `/api/bug/${bugObject._id}`,
 				data: qs.stringify(bugObject),
 				headers: {
 				  'content-type': 'application/x-www-form-urlencoded;charset=utf-8'
@@ -37,7 +35,7 @@ export default (props)=>{
 			console.log(bugObject);
 			axios({
 				method: 'post',
-				url: '/api/bug',
+				url: BUG_TRACKER_SERVER + '/api/bug',
 				data: qs.stringify(bugObject),
 				headers: {
 				  'content-type': 'application/x-www-form-urlencoded;charset=utf-8'
