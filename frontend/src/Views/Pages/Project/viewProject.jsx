@@ -1,6 +1,6 @@
 import React from "react"
 import "./project.css"
-
+import BasicTable from '../../Components/Table/table'
 function DisplayTable(props){
     var border={color:"black",margin:50,borderWidth:"1px", borderColor:"#aaaaaa", borderStyle:'solid'}
     return <div>
@@ -19,10 +19,10 @@ function DisplayTable(props){
             </tbody>
         </table>
     </div>
-}
+} 
 
 export default() =>{
-
+    console.log("in the project tab");
     var projectList = [
         {
             name: "Test Project",
@@ -40,9 +40,6 @@ export default() =>{
 
 
     return <div className="page-container">
-        <div>
-        <h1 style={{color:"black"}}>Select Project :</h1>
-        <DisplayTable projectList={projectList}/>
-        </div>
+        <BasicTable data={projectList} />
     </div>
 }

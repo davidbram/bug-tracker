@@ -24,7 +24,7 @@ function App() {
       <Switch>
         <Route path="/" exact><Dashboard /></Route>
         <Route path="/viewbugs"><ViewBugPage /></Route>
-        <Route path="/viewProject"><ViewProject></ViewProject></Route>
+        <Router path="/viewproject"><ViewProject /></Router>
         <Router path="/create"><div className='page-container'><CreateBug title="Create Bug" /></div>
 
         </Router>
