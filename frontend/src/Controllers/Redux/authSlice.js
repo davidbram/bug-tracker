@@ -2,6 +2,7 @@
  import axios from 'axios';
  import qs from 'qs';
 
+const BUG_TRACKER_SERVER = process.env.BUG_TRACKER_SERVER; 
 const slice = createSlice({
     name:"auth",
     initialState:{
@@ -12,7 +13,7 @@ const slice = createSlice({
         signIn:(state,action)=>{
         let isLoggedIn = () => axios({
 				method: 'post',
-				url: '/api/login',
+				url: BUG_TRACKER_SERVER + '/api/login',
 				data: qs.stringify(action.payload),
 				headers: {
 				  'content-type': 'application/x-www-form-urlencoded;charset=utf-8'
@@ -39,7 +40,7 @@ const slice = createSlice({
         },
 
         signOut:(state)=>{
-        let isLoggedOut = () => axios.get("/api/logout")
+        let isLoggedOut = () => axios.get(BUG_TRACKER_SERVER + "/api/logout")
         .then((response) => {
             console.log(response.data);
             return(true);
@@ -56,7 +57,7 @@ const slice = createSlice({
         createUser:(state,action)=>{
         let isCreated = () => axios({
 				method: 'post',
-				url: '/api/register',
+				url: BUG_TRACKER_SERVER + '/api/register',
 				data: qs.stringify(action.payload),
 				headers: {
 				      'content-type': 'application/x-www-form-urlencoded;charset=utf-8'
