@@ -5,11 +5,13 @@ import axios from "axios";
 import qs from "qs";
 
 import CloseIcon from '@material-ui/icons/Close';
+import { useHistory } from 'react-router';
 
 const BUG_TRACKER_SERVER = process.env.REACT_APP_BUG_TRACKER_SERVER;
 
 export default (props) => {
   const [bugObject, setBugObject] = useState(new BugModel(props.bug));
+  const history = useHistory();
 
   const apiPaths = Object.freeze({
     EDIT_BUG_API: BUG_TRACKER_SERVER + `/api/bug/${bugObject._id}`,
@@ -35,6 +37,7 @@ export default (props) => {
       }
       axios.post(apiPaths.CREATE_BUG_API, bugObject);
     }
+    history.push("/viewbugs")
   }
 
   return (
