@@ -70,10 +70,13 @@ console.log(BUG_TRACKER_SERVER);
 				<label>Name:</label>
 				<input name='name' placeholder='Bug Name' required onChange={inputChanged} value={bugObject.name}></input>
         <label>Project Name:</label>
-        <select name="projects">
+        <select name="project_id" onChange={e=>(setBugObject({
+			...bugObject,
+			project_id:e.currentTarget.value
+		}))}>
           {
-            projects.map(p => (
-              <option>{p.name}</option>
+            projects.map((p) => (
+              <option key={p._id} value={p._id}>{p.name}</option>
             ))
           }
         </select>
