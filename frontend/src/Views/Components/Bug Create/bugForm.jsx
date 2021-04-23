@@ -17,7 +17,7 @@ console.log(BUG_TRACKER_SERVER);
 	const [projects,setProjects] = useState([{"name":"testProject","description":"test Description"}])
   useEffect(()=>{
     // GET request using axios inside useEffect React hook
-    axios.get(BUG_TRACKER_SERVER+'api/project')
+    axios.get(BUG_TRACKER_SERVER+'/api/project')
         .then(response => {
           console.log(response.data);
           setProjects(response.data)
@@ -70,7 +70,7 @@ console.log(BUG_TRACKER_SERVER);
 				<label>Name:</label>
 				<input name='name' placeholder='Bug Name' required onChange={inputChanged} value={bugObject.name}></input>
         <label>Project Name:</label>
-        <select name="project_id" onChange={e=>(setBugObject({
+        <select disabled={props.title==="Edit Bug"?true:false} name="project_id" onChange={e=>(setBugObject({
 			...bugObject,
 			project_id:e.currentTarget.value
 		}))}>
