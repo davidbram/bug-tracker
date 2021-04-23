@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { withStyles,makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -37,11 +37,30 @@ export default function BasicTable(props) {
       },
     },
   }))(TableRow);
+
+  const [newProject, setNewProject] = useState({
+    name: "",
+    description: ""
+  });
+
+  const handleNewProjectChange = (event) => {
+    const { name, value } = event.target; 
+    setNewProject(prevValue => ({
+      ...prevValue,
+      [name]: value
+    }));
+  }
+
+  const handleFormSubmit = (event) => {
+    event.preventDefault();
+    props.addProject(newProject);
+  }
   
   const classes = useStyles();
     console.log(props.data);
   return (
     <TableContainer component={Paper} style={{width:800}}>
+      <form onSubmit={handleFormSubmit}>
       <Table className={classes.table} aria-label="simple table">
         <TableHead style={{backgroundColor:"var(--prim-color)"}}>
           <TableRow style={{backgroundColor:'#f1710'}}>
@@ -57,16 +76,18 @@ export default function BasicTable(props) {
               <StyledTableCell component="th" scope="row">
                 {row.name}
               </StyledTableCell>
-              <StyledTableCell align="center">{row.name}</StyledTableCell>
+              <StyledTableCell align="center">{row.description}</StyledTableCell>
               <TableCell></TableCell>
               
             </StyledTableRow>
           ))}
-          <StyledTableCell><input type="text" /> </StyledTableCell>
-          <StyledTableCell align="center"><input type="text" /> </StyledTableCell>
-          <TableCell align="left"><AddButton color="secondary" /></TableCell>
+          <StyledTableCell><input name="name" value={newProject.name} onChange={handleNewProjectChange} /> </StyledTableCell>
+          <StyledTableCell align="center"><input name="description" value={newProject.description} onChange={handleNewProjectChange} /> </StyledTableCell>
+          <TableCell align="left"><AddButton color="secondary" type="submit" /></TableCell>
         </TableBody>
       </Table>
+      </form>
+      
     </TableContainer>
   );
 }
