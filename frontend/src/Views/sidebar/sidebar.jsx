@@ -18,9 +18,9 @@ export default ()=>{
     return(
           <div className="sidebar">
               <Link className='nav-link' to=
-              '/'><h1 className='brand'>Bug-Tracker</h1></Link>
+              '/dashboard'><h1 className='brand'>Bug-Tracker</h1></Link>
               <ul>
-              <li><Link to='/' className='nav-link'>Dashboard</Link></li>
+              <li><Link to='/dashboard' className='nav-link'>Dashboard</Link></li>
                   <li><Link to='/viewbugs' className='nav-link'>View Bugs</Link></li>
                  {auth.admin && <li><Link to='/create' className='nav-link'>Create Bug</Link></li>}
                  <li><Link to="/viewproject" className="nav-link">View Projects</Link> </li>

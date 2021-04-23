@@ -6,6 +6,8 @@ import {useHistory} from 'react-router-dom';
 import axios from 'axios';
 import bugModel from '../../Models/bugModel';
 
+const BUG_TRACKER_SERVER = process.env.REACT_APP_BUG_TRACKER_SERVER;
+
 export default() =>{
     const [bugs, setBugs] = useState([]);
     const dispatch = useDispatch();
@@ -29,8 +31,9 @@ export default() =>{
         browserHistory.push('/viewbugs');
     }
 
+
     useEffect(() => {
-        axios.get("/api/bug")
+        axios.get(BUG_TRACKER_SERVER + "/api/bug")
        .then((response) => {
             const data = response.data.map(bug => new bugModel(bug));
             setBugs(data);
@@ -38,12 +41,11 @@ export default() =>{
     }, []);
 
     useEffect(()=>{
-        axios.get("/api/bug")
+        axios.get(BUG_TRACKER_SERVER + "/api/bug")
        .then((response) => {
             const data = response.data.map(bug => new bugModel(bug));
             setBugs(data);
           });
-        // dispatch(getBugs("http://localhost:3001/api/bug"));
     },[bugs === undefined]
     );
     
