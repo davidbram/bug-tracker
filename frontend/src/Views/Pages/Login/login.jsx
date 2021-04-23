@@ -24,6 +24,7 @@ export default ()=>{
         console.log(formInput);
         dispatch(signIn(formInput));
         e.preventDefault();
+        history.push("/dashboard");
     }
 
     return(
