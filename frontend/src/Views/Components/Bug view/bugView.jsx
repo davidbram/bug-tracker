@@ -8,10 +8,11 @@ import EditPanel from '../edit delete/editPanel';
 import EditBug from '../Bug Create/bugForm';
 import axios from 'axios';
 
+
 import CloseIcon from '@material-ui/icons/Close';
 //import { markComplete } from '../../../../../backend/controllers/bug';
 
-const REACT_APP_BUG_TRACKER_SERVER = process.env.REACT_APP_BUG_TRACKER_SERVER; 
+const BUG_TRACKER_SERVER = process.env.REACT_APP_BUG_TRACKER_SERVER; 
 export default (props)=>{
     const dispatch = useDispatch();
     const bug = new BugModel(props.bug);
@@ -23,8 +24,19 @@ export default (props)=>{
     }
 
     function deleteClicked(bugId){
-        axios.delete(REACT_APP_BUG_TRACKER_SERVER + `/api/bug/${bugId}`)
-        .then(res => console.log(res))
+        axios.delete(BUG_TRACKER_SERVER + `/api/bug/${bugId}`)
+        .then(res => {
+            console.log(res);
+            axios.get(BUG_TRACKER_SERVER + "/api/bug").then((response) => {
+                let data = response.data.map((bug) => new BugModel(bug));
+                data = data.filter((bug) => bug.status === props.mode);
+                const sorted = data.sort((a, b) => {
+                  return a.priority - b.priority;
+                });
+                props.clicked(bugId);
+                props.setBugs(sorted);
+              });
+        })
         .catch(err => console.log(err));
     }
 
@@ -32,9 +44,18 @@ export default (props)=>{
     }
 
     function markComplete(bugId) {
-        console.log(bugId);
-        axios.patch(REACT_APP_BUG_TRACKER_SERVER + `/api/bug/complete/${bugId}`)
-        .then(res => console.log(res))
+        axios.patch(BUG_TRACKER_SERVER + `/api/bug/complete/${bugId}`)
+        .then(res => {
+            console.log(res);
+            axios.get(BUG_TRACKER_SERVER + "/api/bug").then((response) => {
+                let data = response.data.map((bug) => new BugModel(bug));
+                data = data.filter((bug) => bug.status === props.mode);
+                const sorted = data.sort((a, b) => {
+                  return a.priority - b.priority;
+                });
+                props.clicked(bugId);
+                props.setBugs(sorted);
+              });})
         .catch(err => console.log(err));
     }
 
