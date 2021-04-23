@@ -31,13 +31,15 @@ export default() =>{
     const [projects, setProjects] = useState([]);
 
     const addProject = project => {
+
+        console.log(project);
         
-        axios.post(BUG_TRACKER_SERVER + "/api/project", project).then(response => {
-            const createdProject = response.data;
-            setProjects(prevProjects => ({
-            ...prevProjects,
-            createdProject}));
-    })
+    //     axios.post(BUG_TRACKER_SERVER + "/api/project", project).then(response => {
+    //         const createdProject = response.data;
+    //         setProjects(prevProjects => ({
+    //         ...prevProjects,
+    //         createdProject}));
+    // })
 }
 
     useEffect(() => {
@@ -45,22 +47,6 @@ export default() =>{
             setProjects(response.data);
           });
     }, [])
-
-    var projectList = [
-        {
-            name: "Test Project",
-            desc : "Test Desc"
-        },
-        {
-            name: "Test Project1",
-            desc : "Test Desc1"
-        },
-        {
-            name: "Test Project2",
-            desc : "Test Desc2"
-        }
-    ]
-
 
     return <div className="page-container">
         <BasicTable data={projects} addProject={addProject} />

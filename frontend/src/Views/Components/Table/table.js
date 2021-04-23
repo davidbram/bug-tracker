@@ -72,7 +72,7 @@ export default function BasicTable(props) {
         </TableHead>
         <TableBody>
           {props.data.map((row) => (
-            <StyledTableRow key={row.name}>
+            <StyledTableRow key={row._id}>
               <StyledTableCell component="th" scope="row">
                 {row.name}
               </StyledTableCell>
