@@ -7,6 +7,7 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import DeleteIcon from '@material-ui/icons/Delete';
 //importing button icon
 import AddButton from '../Icon Buttons/IconButtons'
 import { green } from '@material-ui/core/colors';
@@ -43,7 +44,7 @@ export default function BasicTable(props) {
     description: ""
   });
 
-  const handleNewProjectChange = (event) => {
+  function handleNewProjectChange (event) {
     const { name, value } = event.target; 
     setNewProject(prevValue => ({
       ...prevValue,
@@ -51,16 +52,15 @@ export default function BasicTable(props) {
     }));
   }
 
-  const handleFormSubmit = (event) => {
+  function handleFormSubmit (event) {
     event.preventDefault();
     props.addProject(newProject);
+    
   }
   
   const classes = useStyles();
-    console.log(props.data);
   return (
     <TableContainer component={Paper} style={{width:800}}>
-      <form onSubmit={handleFormSubmit}>
       <Table className={classes.table} aria-label="simple table">
         <TableHead style={{backgroundColor:"var(--prim-color)"}}>
           <TableRow style={{backgroundColor:'#f1710'}}>
@@ -71,22 +71,25 @@ export default function BasicTable(props) {
           </TableRow>
         </TableHead>
         <TableBody>
-          {props.data.map((row) => (
-            <StyledTableRow key={row.name}>
+          {props.data.length > 0 && props.data.map((row) => (
+            <StyledTableRow key={row._id}>
               <StyledTableCell component="th" scope="row">
                 {row.name}
               </StyledTableCell>
               <StyledTableCell align="center">{row.description}</StyledTableCell>
-              <TableCell></TableCell>
+              <TableCell><button onClick={() => props.removeProject(row._id)}><DeleteIcon /></button></TableCell>
               
             </StyledTableRow>
           ))}
-          <StyledTableCell><input name="name" value={newProject.name} onChange={handleNewProjectChange} /> </StyledTableCell>
-          <StyledTableCell align="center"><input name="description" value={newProject.description} onChange={handleNewProjectChange} /> </StyledTableCell>
-          <TableCell align="left"><AddButton color="secondary" type="submit" /></TableCell>
+          <TableCell><input name="name" value={newProject.name} onChange={handleNewProjectChange} /></TableCell>
+          <TableCell align="center"><input name="description" value={newProject.description} onChange={handleNewProjectChange} /></TableCell>
+          <TableCell align="left"><button color="secondary" type="submit" onClick={handleFormSubmit} >Add</button></TableCell>
         </TableBody>
+        
+        
+      
       </Table>
-      </form>
+
       
     </TableContainer>
   );

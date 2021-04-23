@@ -40,29 +40,27 @@ export default() =>{
     })
 }
 
+    const removeProject = projectId => {
+        axios.delete(BUG_TRACKER_SERVER + `/api/project/${projectId}`).then(response => {
+            setProjects(prevProjects => {
+                return prevProjects.filter(project => project._id !== projectId);
+            })
+        })
+    }
+
     useEffect(() => {
         axios.get(BUG_TRACKER_SERVER + "/api/project").then((response) => {            
             setProjects(response.data);
           });
     }, [])
 
-    var projectList = [
-        {
-            name: "Test Project",
-            desc : "Test Desc"
-        },
-        {
-            name: "Test Project1",
-            desc : "Test Desc1"
-        },
-        {
-            name: "Test Project2",
-            desc : "Test Desc2"
-        }
-    ]
-
+    useEffect(() => {
+        axios.get(BUG_TRACKER_SERVER + "/api/project").then((response) => {            
+            setProjects(response.data);
+          });
+    }, [projects.length])
 
     return <div className="page-container">
-        <BasicTable data={projects} addProject={addProject} />
+        <BasicTable data={projects} addProject={addProject} removeProject={removeProject} />
     </div>
 }
