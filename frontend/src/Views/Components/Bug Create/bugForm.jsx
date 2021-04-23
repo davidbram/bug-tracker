@@ -2,7 +2,6 @@ import React,{useState} from 'react';
 import './bugForm.css';
 import BugModel from '../../../Models/bugModel';
 import axios from "axios";
-import qs from "qs";
 
 import CloseIcon from '@material-ui/icons/Close';
 import { useHistory } from 'react-router';
