@@ -17,7 +17,7 @@ console.log(BUG_TRACKER_SERVER);
 	const [projects,setProjects] = useState([{"name":"testProject","description":"test Description"}])
   useEffect(()=>{
     // GET request using axios inside useEffect React hook
-    axios.get(BUG_TRACKER_SERVER+'api/project')
+    axios.get(BUG_TRACKER_SERVER+'/api/project')
         .then(response => {
           console.log(response.data);
           setProjects(response.data)
