@@ -7,6 +7,7 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import DeleteIcon from '@material-ui/icons/Delete';
 //importing button icon
 import AddButton from '../Icon Buttons/IconButtons'
 import { green } from '@material-ui/core/colors';
@@ -76,7 +77,7 @@ export default function BasicTable(props) {
                 {row.name}
               </StyledTableCell>
               <StyledTableCell align="center">{row.description}</StyledTableCell>
-              <TableCell></TableCell>
+              <TableCell><button onClick={() => props.removeProject(row._id)}><DeleteIcon /></button></TableCell>
               
             </StyledTableRow>
           ))}
