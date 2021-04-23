@@ -50,6 +50,9 @@ console.log(BUG_TRACKER_SERVER);
 			  })
 		} else {
 			console.log(bugObject);
+			if(!bugObject.hasOwnProperty('priority')) {
+				bugObject.priority = 1
+			  }
 			axios({
 				method: 'post',
 				url: '/api/bug',

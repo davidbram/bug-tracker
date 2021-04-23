@@ -130,6 +130,7 @@ function SortedBugs(props) {
         <BugView
           clicked={BugClicked}
           bug={bugs.filter((bug) => bug.name === DISPLAY_BUG.name)[0]}
+          setBugs={setBugs}
         />
       )}
     </div>
