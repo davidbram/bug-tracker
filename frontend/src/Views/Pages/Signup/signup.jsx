@@ -2,9 +2,17 @@ import {createUser} from "../../../Controllers/Redux/authSlice";
 import {useDispatch} from 'react-redux';
 import React, { useState } from "react";
 import "./signup.css";
+import axios from "axios";
+import { useHistory } from "react-router";
+import * as dotenv from "dotenv";
+
+
+dotenv.config();
+const BUG_TRACKER_SERVER = process.env.REACT_APP_BUG_TRACKER_SERVER;
 
 function Signup(){
 
+    const history = useHistory();
     const dispatch = useDispatch();
     const [details,setDetails] = useState({
         username:"",
@@ -23,7 +31,11 @@ function Signup(){
 
     function handleSubmit(event){
         console.log(details);
-        dispatch(createUser(details));
+        // dispatch(createUser(details));
+        axios.post(BUG_TRACKER_SERVER + "/api/register", details)
+        .then(res => {
+            history.push("/")
+        })
         event.preventDefault();
     }
 
@@ -36,7 +48,7 @@ function Signup(){
                 <input name="password" type="password" placeholder="Password" onChange={updateDetails} value={details.password}/>
                 <input name="passwordc" type="password" placeholder="Confirm Password" onChange={updateDetails} value={details.passwordc}/>
                 <button type="submit" className="login-btn">Signup</button>
-                <p margin="50">Already existing user ? Login <a href="/login">here</a></p>
+                <p margin="50">Already existing user ? Login <a href="/">here</a></p>
             </form> 
         </div>
     )
