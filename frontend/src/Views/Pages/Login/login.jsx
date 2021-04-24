@@ -22,9 +22,12 @@ export default ()=>{
 
     function submit(e){
         console.log(formInput);
-        dispatch(signIn(formInput));
-        e.preventDefault();
-        history.push("/dashboard");
+        if((formInput.username === "admin" && formInput.password === "admin") || (formInput.username === "test" && formInput.password === "test") )
+        {
+            dispatch(signIn(formInput));
+            e.preventDefault();
+            history.push("/dashboard");
+        }
     }
 
     return(
