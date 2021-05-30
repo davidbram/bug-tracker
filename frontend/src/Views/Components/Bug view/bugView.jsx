@@ -1,8 +1,8 @@
-import React,{useState} from 'react';
+import React, { useState } from 'react';
 import ViewSection from './component/bugViewSection';
 import './bugView.css';
 import BugModel from '../../../Models/bugModel';
-import {useDispatch} from 'react-redux';
+import { useDispatch } from 'react-redux';
 //import {markComplete} from '../../../Controllers/Redux/bugSlice';
 import EditPanel from '../edit delete/editPanel';
 import EditBug from '../Bug Create/bugForm';
@@ -17,11 +17,12 @@ export default (props)=>{
     const dispatch = useDispatch();
     const bug = new BugModel(props.bug);
 
-    const [editBugDetails, setEditBugDetails] = useState({});
-    const [displayEdit,setDisplayEdit] = useState(false);
-    function editClicked(){
-        setDisplayEdit(!displayEdit);
-    }
+  function deleteClicked(bugId) {
+    axios
+      .delete(BUG_TRACKER_SERVER + `/api/bug/${bugId}`)
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
+  }
 
     function deleteClicked(bugId){
         axios.delete(BUG_TRACKER_SERVER + `/api/bug/${bugId}`)
@@ -40,8 +41,13 @@ export default (props)=>{
         .catch(err => console.log(err));
     }
 
-    function handleChange(){
-    }
+  function markComplete(bugId) {
+    console.log(bugId);
+    axios
+      .patch(BUG_TRACKER_SERVER + `/api/bug/complete/${bugId}`)
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
+  }
 
     function markComplete(bugId) {
         axios.patch(BUG_TRACKER_SERVER + `/api/bug/complete/${bugId}`)

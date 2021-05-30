@@ -1,9 +1,9 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
-import {useDispatch,useSelector} from 'react-redux';
-import {useHistory} from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
-import {signOut} from '../../Controllers/Redux/authSlice';
+import { signOut } from '../../Controllers/Redux/authSlice';
 import './sidebar.css';
 
 export default (props)=>{

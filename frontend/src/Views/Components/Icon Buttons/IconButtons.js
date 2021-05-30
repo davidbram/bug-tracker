@@ -4,9 +4,7 @@ import IconButton from '@material-ui/core/IconButton';
 //importing button icon
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 
-const useStyles = makeStyles((theme) => ({
-  
-}));
+const useStyles = makeStyles((theme) => ({}));
 
 export default function IconButtons() {
   const classes = useStyles();

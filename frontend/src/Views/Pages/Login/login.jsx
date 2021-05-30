@@ -1,9 +1,16 @@
-import React,{useState} from 'react';
-import {useDispatch} from 'react-redux';
-import {signIn} from '../../../Controllers/Redux/authSlice';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { signIn } from '../../../Controllers/Redux/authSlice';
 import './login.css';
 import { useHistory } from 'react-router-dom';
 
+export default () => {
+  const history = useHistory();
+  const dispatch = useDispatch();
+  const [formInput, setFormInput] = useState({
+    username: '',
+    password: '',
+  });
 
 export default (props)=>{
     const history = useHistory();

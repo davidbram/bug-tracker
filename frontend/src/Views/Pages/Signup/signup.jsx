@@ -10,7 +10,14 @@ import * as dotenv from "dotenv";
 dotenv.config();
 const BUG_TRACKER_SERVER = process.env.REACT_APP_BUG_TRACKER_SERVER;
 
-function Signup(){
+function Signup() {
+  const dispatch = useDispatch();
+  const [details, setDetails] = useState({
+    username: '',
+    email: '',
+    password: '',
+    passwordc: '',
+  });
 
     const history = useHistory();
     const dispatch = useDispatch();
@@ -21,13 +28,11 @@ function Signup(){
         passwordc:""
     })
 
-    function updateDetails(event){
-        const { name, value} = event.target;
-        setDetails({
-            ...details,
-            [name]:value
-        })
-    }
+  function handleSubmit(event) {
+    console.log(details);
+    dispatch(createUser(details));
+    event.preventDefault();
+  }
 
     function handleSubmit(event){
         console.log(details);
@@ -54,4 +59,4 @@ function Signup(){
     )
 }
 
-export default Signup
+export default Signup;

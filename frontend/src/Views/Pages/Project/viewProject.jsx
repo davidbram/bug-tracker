@@ -24,7 +24,8 @@ function DisplayTable(props){
             </tbody>
         </table>
     </div>
-} 
+  );
+}
 
 export default() =>{
 
@@ -63,4 +64,5 @@ export default() =>{
     return <div className="page-container">
         <BasicTable data={projects} addProject={addProject} removeProject={removeProject} />
     </div>
-}
+  );
+};

@@ -54,6 +54,13 @@ const history = useHistory();
 		}
 	}
 
+  function inputChanged(e) {
+    const { name, value } = e.target;
+    setBugObject({
+      ...bugObject,
+      [name]: value,
+    });
+  }
 
 	return(
 		<div className='bug-create'>

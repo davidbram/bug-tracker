@@ -9,7 +9,7 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import DeleteIcon from '@material-ui/icons/Delete';
 //importing button icon
-import AddButton from '../Icon Buttons/IconButtons'
+import AddButton from '../Icon Buttons/IconButtons';
 import { green } from '@material-ui/core/colors';
 
 const useStyles = makeStyles({
@@ -17,8 +17,6 @@ const useStyles = makeStyles({
     minWidth: 650,
   },
 });
-
-
 
 export default function BasicTable(props) {
   const StyledTableCell = withStyles((theme) => ({
@@ -30,7 +28,7 @@ export default function BasicTable(props) {
       fontSize: 14,
     },
   }))(TableCell);
-  
+
   const StyledTableRow = withStyles((theme) => ({
     root: {
       '&:nth-of-type(odd)': {
@@ -60,14 +58,15 @@ export default function BasicTable(props) {
   
   const classes = useStyles();
   return (
-    <TableContainer component={Paper} style={{width:800}}>
+    <TableContainer component={Paper} style={{ width: 800 }}>
       <Table className={classes.table} aria-label="simple table">
-        <TableHead style={{backgroundColor:"var(--prim-color)"}}>
-          <TableRow style={{backgroundColor:'#f1710'}}>
-            <TableCell style={{color:'white'}}>Name</TableCell>
-            <TableCell style={{color:'white'}} align="center">Desc</TableCell>
+        <TableHead style={{ backgroundColor: 'var(--prim-color)' }}>
+          <TableRow style={{ backgroundColor: '#f1710' }}>
+            <TableCell style={{ color: 'white' }}>Name</TableCell>
+            <TableCell style={{ color: 'white' }} align="center">
+              Desc
+            </TableCell>
             <TableCell></TableCell>
-           
           </TableRow>
         </TableHead>
         <TableBody>

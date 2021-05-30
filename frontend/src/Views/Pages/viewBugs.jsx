@@ -1,16 +1,16 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { getBugs } from "../../Controllers/Redux/bugSlice";
-import BugCard from "../Components/Bug Card/bugCard";
-import BugView from "../Components/Bug view/bugView.jsx";
-import bugModel from "../../Models/bugModel";
-import axios from "axios";
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getBugs } from '../../Controllers/Redux/bugSlice';
+import BugCard from '../Components/Bug Card/bugCard';
+import BugView from '../Components/Bug view/bugView.jsx';
+import bugModel from '../../Models/bugModel';
+import axios from 'axios';
 
-import AppBar from "@material-ui/core/AppBar";
-import Tabs from "@material-ui/core/Tabs";
-import Tab from "@material-ui/core/Tab";
-import Typography from "@material-ui/core/Typography";
-import Box from "@material-ui/core/Box";
+import AppBar from '@material-ui/core/AppBar';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
+import Typography from '@material-ui/core/Typography';
+import Box from '@material-ui/core/Box';
 
 
 const BUG_TRACKER_SERVER = process.env.REACT_APP_BUG_TRACKER_SERVER;
@@ -19,7 +19,7 @@ function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
   return (
-    <div 
+    <div
       role="tabpanel"
       hidden={value !== index}
       id={`simple-tabpanel-${index}`}
@@ -43,14 +43,14 @@ export default (props) => {
   };
 
   return (
-    <div className="page-container" style={{ position: "static" }}>
+    <div className="page-container" style={{ position: 'static' }}>
       <AppBar
         position="static"
         style={{
-          backgroundColor: "#264e70",
+          backgroundColor: '#264e70',
           width: 330,
           height: 50,
-          position: "absolute",
+          position: 'absolute',
         }}
       >
         <Tabs
@@ -58,8 +58,8 @@ export default (props) => {
           onChange={handleChange}
           aria-label="simple tabs example"
         >
-          <Tab label="Open Bugs" style={{ position: "static" }} />
-          <Tab label="Completed Bugs" style={{ position: "static" }} />
+          <Tab label="Open Bugs" style={{ position: 'static' }} />
+          <Tab label="Completed Bugs" style={{ position: 'static' }} />
         </Tabs>
       </AppBar>
       <TabPanel
@@ -86,11 +86,9 @@ function SortedBugs(props) {
   const [bugs, setBugs] = useState([]);
 
   const [DISPLAY_BUG, SET_DISPLAY_BUG] = useState({
-    name: "",
+    name: '',
     isDisplayed: false,
   });
-  // const dispatch = useDispatch();
-  // const { bugs } = useSelector(state=>state.data);
 
   useEffect(() => {
     axios.get(BUG_TRACKER_SERVER + "/api/bug").then((response) => {
