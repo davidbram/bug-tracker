@@ -12,7 +12,9 @@ import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 
+
 const BUG_TRACKER_SERVER = process.env.REACT_APP_BUG_TRACKER_SERVER;
+
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -89,9 +91,9 @@ function SortedBugs(props) {
   });
 
   useEffect(() => {
-    axios.get(BUG_TRACKER_SERVER + '/api/bug').then((response) => {
+    axios.get(BUG_TRACKER_SERVER + "/api/bug").then((response) => {
       var data = response.data.map((bug) => new bugModel(bug));
-      data = data.filter((bug) => bug.status == props.mode);
+      data = data.filter((bug) => bug.status === props.mode);
       const sorted = data.sort((a, b) => {
         return a.priority - b.priority;
       });
@@ -100,19 +102,15 @@ function SortedBugs(props) {
   }, []);
 
   useEffect(() => {
-    axios.get(BUG_TRACKER_SERVER + '/api/bug').then((response) => {
+    axios.get(BUG_TRACKER_SERVER + "/api/bug").then((response) => {
       var data = response.data.map((bug) => new bugModel(bug));
-      data = data.filter((bug) => bug.status == props.mode);
+      data = data.filter((bug) => bug.status === props.mode);
       const sorted = data.sort((a, b) => {
         return a.priority - b.priority;
       });
       setBugs(sorted);
     });
   }, [bugs.length]);
-
-  // useEffect(()=> {
-  //     dispatch(getBugs("/api/bug"));
-  // },[bugs.length < 1]);
 
   function BugClicked(name) {
     SET_DISPLAY_BUG({
@@ -130,6 +128,7 @@ function SortedBugs(props) {
         <BugView
           clicked={BugClicked}
           bug={bugs.filter((bug) => bug.name === DISPLAY_BUG.name)[0]}
+          setBugs={setBugs}
         />
       )}
     </div>

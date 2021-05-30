@@ -5,23 +5,23 @@ import qs from 'qs';
 const BUG_TRACKER_SERVER = process.env.REACT_APP_BUG_TRACKER_SERVER;
 
 const slice = createSlice({
-  name: 'auth',
-  initialState: {
-    admin: false,
-    LoggedIn: false,
-  },
-  reducers: {
-    signIn: (state, action) => {
-      let isLoggedIn = () =>
-        axios({
-          method: 'post',
-          url: BUG_TRACKER_SERVER + '/api/login',
-          data: qs.stringify(action.payload),
-          headers: {
-            'content-type': 'application/x-www-form-urlencoded;charset=utf-8',
-          },
-        })
-          .then((res) => {
+    name:"auth",
+    initialState:{
+        admin:false,
+        LoggedIn:false,
+    },
+    reducers:{
+        signIn:(state,action)=>{
+        let isLoggedIn = () => axios({
+				method: 'post',
+				url: BUG_TRACKER_SERVER + '/api/login',
+				data: qs.stringify(action.payload),
+				headers: {
+				  'content-type': 'application/x-www-form-urlencoded;charset=utf-8'
+				}
+              })
+        .then(res =>
+         {
             console.log(res.data);
             // state.LoggedIn = true;
             // state.admin = true;
@@ -34,16 +34,11 @@ const slice = createSlice({
         state.LoggedIn = true;
         state.admin = true;
       }
-
-      // const {name,password} = action.payload;
-      // console.log(state);
     },
 
-    signOut: (state) => {
-      let isLoggedOut = () =>
-        axios
-          .get('/api/logout')
-          .then((response) => {
+        signOut:(state)=>{
+        let isLoggedOut = () => axios.get(BUG_TRACKER_SERVER + "/api/logout")
+        .then((response) => {
             console.log(response.data);
             return true;
           })
@@ -55,15 +50,14 @@ const slice = createSlice({
       }
     },
 
-    createUser: (state, action) => {
-      let isCreated = () =>
-        axios({
-          method: 'post',
-          url: BUG_TRACKER_SERVER + '/api/register',
-          data: qs.stringify(action.payload),
-          headers: {
-            'content-type': 'application/x-www-form-urlencoded;charset=utf-8',
-          },
+        createUser:(state,action)=>{
+        let isCreated = () => axios({
+				method: 'post',
+				url: BUG_TRACKER_SERVER + '/api/register',
+				data: qs.stringify(action.payload),
+				headers: {
+				      'content-type': 'application/x-www-form-urlencoded;charset=utf-8'
+				      }
         })
           .then((res) => {
             console.log(res.data);
