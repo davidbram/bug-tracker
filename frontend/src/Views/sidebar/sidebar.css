@@ -36,6 +36,13 @@
   width: 100%;
 }
 
-.sidebar .brand {
-  font-size: 2.2rem;
+.sidebar .brand{
+    font-size: 2.2rem;
+}
+
+.sidebar .admin{
+    position: absolute;
+    bottom: 5;
+    left: 0;
+    width: 100%;    
 }

@@ -7,11 +7,11 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-import DeleteIcon from '@material-ui/icons/Delete';
+
 //importing button icon
 import AddButton from '../Icon Buttons/IconButtons';
 import { green } from '@material-ui/core/colors';
-
+import "./table.css"
 const useStyles = makeStyles({
   table: {
     minWidth: 650,
@@ -19,6 +19,7 @@ const useStyles = makeStyles({
 });
 
 export default function BasicTable(props) {
+ 
   const StyledTableCell = withStyles((theme) => ({
     head: {
       backgroundColor: theme.palette.common.black,
@@ -76,13 +77,13 @@ export default function BasicTable(props) {
                 {row.name}
               </StyledTableCell>
               <StyledTableCell align="center">{row.description}</StyledTableCell>
-              <TableCell><button onClick={() => props.removeProject(row._id)}><DeleteIcon /></button></TableCell>
+              <TableCell><button style={{all:'unset'}} onClick={() => props.removeProject(row._id)}><i className="far fa-trash-alt fa-lg" aria-hidden="true"></i></button></TableCell>
               
             </StyledTableRow>
           ))}
           <TableCell><input name="name" value={newProject.name} onChange={handleNewProjectChange} /></TableCell>
           <TableCell align="center"><input name="description" value={newProject.description} onChange={handleNewProjectChange} /></TableCell>
-          <TableCell align="left"><button color="secondary" type="submit" onClick={handleFormSubmit} >Add</button></TableCell>
+          <TableCell align="left"><button style={{all:'unset'}} type="submit" onClick={handleFormSubmit} ><i className="fas fa-plus-circle fa-lg"></i></button></TableCell>
         </TableBody>
         
         
