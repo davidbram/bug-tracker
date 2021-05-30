@@ -7,7 +7,7 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-import DeleteIcon from '@material-ui/icons/Delete';
+
 //importing button icon
 import AddButton from '../Icon Buttons/IconButtons';
 import { green } from '@material-ui/core/colors';
@@ -19,7 +19,7 @@ const useStyles = makeStyles({
 });
 
 export default function BasicTable(props) {
-  const delIcon = '<i class="fa fa-trash" aria-hidden="true"></i>'
+ 
   const StyledTableCell = withStyles((theme) => ({
     head: {
       backgroundColor: theme.palette.common.black,
