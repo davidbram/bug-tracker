@@ -1,2 +1,2 @@
 # bug-tracker
-A bug tracking system using MERN stack
+A bug tracking system using MERN stack. App Frontend

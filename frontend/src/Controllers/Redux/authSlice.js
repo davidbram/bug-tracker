@@ -1,8 +1,9 @@
- import {createSlice} from '@reduxjs/toolkit';
- import axios from 'axios';
- import qs from 'qs';
+import { createSlice } from '@reduxjs/toolkit';
+import axios from 'axios';
+import qs from 'qs';
 
-const BUG_TRACKER_SERVER = process.env.BUG_TRACKER_SERVER; 
+const BUG_TRACKER_SERVER = process.env.REACT_APP_BUG_TRACKER_SERVER;
+
 const slice = createSlice({
     name:"auth",
     initialState:{
@@ -24,35 +25,30 @@ const slice = createSlice({
             console.log(res.data);
             // state.LoggedIn = true;
             // state.admin = true;
-            return(true);
+            return true;
           })
-        .catch(err => {
-      console.log(err);}
-        );
-        if(isLoggedIn())
-        {
-          state.LoggedIn = true;
-          state.admin = true;
-        }
-
-            // const {name,password} = action.payload;
-            // console.log(state);
-        },
+          .catch((err) => {
+            console.log(err);
+          });
+      if (isLoggedIn()) {
+        state.LoggedIn = true;
+        state.admin = true;
+      }
+    },
 
         signOut:(state)=>{
         let isLoggedOut = () => axios.get(BUG_TRACKER_SERVER + "/api/logout")
         .then((response) => {
             console.log(response.data);
-            return(true);
+            return true;
           })
-        .catch(err => console.log(err));
+          .catch((err) => console.log(err));
 
-        if (isLoggedOut()){
-          state.LoggedIn = false;
-          state.admin = false;
-        }
-
-        },
+      if (isLoggedOut()) {
+        state.LoggedIn = false;
+        state.admin = false;
+      }
+    },
 
         createUser:(state,action)=>{
         let isCreated = () => axios({
@@ -63,22 +59,19 @@ const slice = createSlice({
 				      'content-type': 'application/x-www-form-urlencoded;charset=utf-8'
 				      }
         })
-        .then(res =>
-                {
-                    console.log(res.data);
-                    return(true);
-                })
-        .catch(err => console.log(err));
-          if(isCreated()){
-            state.LoggedIn = true;
-            state.admin = true;
-          }
-        }
+          .then((res) => {
+            console.log(res.data);
+            return true;
+          })
+          .catch((err) => console.log(err));
+      if (isCreated()) {
+        state.LoggedIn = true;
+        state.admin = true;
+      }
     },
+  },
 });
 
 export default slice.reducer;
 
-export const {signIn,signOut,createUser} = slice.actions;
-
- 
+export const { signIn, signOut, createUser } = slice.actions;

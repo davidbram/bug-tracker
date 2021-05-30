@@ -1,16 +1,13 @@
-import React,{useState} from 'react';
+import React, { useState } from 'react';
 import ViewSection from './component/bugViewSection';
 import './bugView.css';
 import BugModel from '../../../Models/bugModel';
-import {useDispatch} from 'react-redux';
+import { useDispatch } from 'react-redux';
 //import {markComplete} from '../../../Controllers/Redux/bugSlice';
 import EditPanel from '../edit delete/editPanel';
 import EditBug from '../Bug Create/bugForm';
 import axios from 'axios';
-
-
 import CloseIcon from '@material-ui/icons/Close';
-//import { markComplete } from '../../../../../backend/controllers/bug';
 
 const BUG_TRACKER_SERVER = process.env.REACT_APP_BUG_TRACKER_SERVER; 
 export default (props)=>{
@@ -18,9 +15,9 @@ export default (props)=>{
     const bug = new BugModel(props.bug);
 
     const [editBugDetails, setEditBugDetails] = useState({});
-    const [displayEdit,setDisplayEdit] = useState(false);
-    function editClicked(){
-        setDisplayEdit(!displayEdit);
+    const [displayEdit, setDisplayEdit] = useState(false);
+    function editClicked() {
+      setDisplayEdit(!displayEdit);
     }
 
     function deleteClicked(bugId){
@@ -40,8 +37,9 @@ export default (props)=>{
         .catch(err => console.log(err));
     }
 
-    function handleChange(){
-    }
+
+  function handleChange() {}
+
 
     function markComplete(bugId) {
         axios.patch(BUG_TRACKER_SERVER + `/api/bug/complete/${bugId}`)
