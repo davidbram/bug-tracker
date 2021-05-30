@@ -27,7 +27,7 @@ export default (props)=>{
               
               
               </ul>
-              {auth.admin && <p>Logged in as Admin <i className="fas fa-users-cog"></i></p>}
+               <p>Logged in as { props.username === "admin" ? "Admin" : "Developer" } <i className="fas fa-users-cog"></i></p>
               <button className='nav-link logout' onClick={SignOut}>Logout</button>
 
           </div>
