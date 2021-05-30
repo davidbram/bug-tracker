@@ -73,7 +73,7 @@ export default (props)=>{
             <ViewSection name='time' title='Time Created' info={bug.time} onEdit={handleChange} />
             {bug.status !== "completed" && <button onClick={() => markComplete(bug._id)}>Mark Complete</button>}
         </div>
-        {displayEdit && <EditBug title="Edit Bug" bug={bug} close={editClicked} />}
+        {displayEdit && <EditBug title="Edit Bug" bug={bug} close={editClicked} setBugs={props.setBugs} />}
         </>
     )
 }
