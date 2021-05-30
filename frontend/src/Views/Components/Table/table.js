@@ -11,7 +11,7 @@ import DeleteIcon from '@material-ui/icons/Delete';
 //importing button icon
 import AddButton from '../Icon Buttons/IconButtons'
 import { green } from '@material-ui/core/colors';
-
+import "./table.css"
 const useStyles = makeStyles({
   table: {
     minWidth: 650,
@@ -78,13 +78,13 @@ export default function BasicTable(props) {
                 {row.name}
               </StyledTableCell>
               <StyledTableCell align="center">{row.description}</StyledTableCell>
-              <TableCell><button style={{all:'unset'}} onClick={() => props.removeProject(row._id)}><span style={{color:"red",cursor:"pointer"}}><i class="far fa-trash-alt fa-2x" aria-hidden="true"></i></span></button></TableCell>
+              <TableCell><button style={{all:'unset'}} onClick={() => props.removeProject(row._id)}><i className="far fa-trash-alt fa-lg" aria-hidden="true"></i></button></TableCell>
               
             </StyledTableRow>
           ))}
           <TableCell><input name="name" value={newProject.name} onChange={handleNewProjectChange} /></TableCell>
           <TableCell align="center"><input name="description" value={newProject.description} onChange={handleNewProjectChange} /></TableCell>
-          <TableCell align="left"><button style={{all:'unset'}} type="submit" onClick={handleFormSubmit} ><span style={{color:"green",cursor:"pointer"}}><i class="fas fa-plus-circle fa-2x"></i></span></button></TableCell>
+          <TableCell align="left"><button style={{all:'unset'}} type="submit" onClick={handleFormSubmit} ><i className="fas fa-plus-circle fa-lg"></i></button></TableCell>
         </TableBody>
         
         
