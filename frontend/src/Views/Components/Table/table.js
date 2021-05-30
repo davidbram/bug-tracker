@@ -21,6 +21,7 @@ const useStyles = makeStyles({
 
 
 export default function BasicTable(props) {
+  const delIcon = '<i class="fa fa-trash" aria-hidden="true"></i>'
   const StyledTableCell = withStyles((theme) => ({
     head: {
       backgroundColor: theme.palette.common.black,
@@ -77,13 +78,13 @@ export default function BasicTable(props) {
                 {row.name}
               </StyledTableCell>
               <StyledTableCell align="center">{row.description}</StyledTableCell>
-              <TableCell><button onClick={() => props.removeProject(row._id)}><DeleteIcon /></button></TableCell>
+              <TableCell><button style={{all:'unset'}} onClick={() => props.removeProject(row._id)}><span style={{color:"red",cursor:"pointer"}}><i class="far fa-trash-alt fa-2x" aria-hidden="true"></i></span></button></TableCell>
               
             </StyledTableRow>
           ))}
           <TableCell><input name="name" value={newProject.name} onChange={handleNewProjectChange} /></TableCell>
           <TableCell align="center"><input name="description" value={newProject.description} onChange={handleNewProjectChange} /></TableCell>
-          <TableCell align="left"><button color="secondary" type="submit" onClick={handleFormSubmit} >Add</button></TableCell>
+          <TableCell align="left"><button style={{all:'unset'}} type="submit" onClick={handleFormSubmit} ><span style={{color:"green",cursor:"pointer"}}><i class="fas fa-plus-circle fa-2x"></i></span></button></TableCell>
         </TableBody>
         
         
