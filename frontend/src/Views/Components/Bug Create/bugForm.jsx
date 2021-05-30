@@ -3,15 +3,13 @@ import './bugForm.css';
 import BugModel from '../../../Models/bugModel';
 import axios from "axios";
 import qs from "qs";
-
+import { useHistory } from 'react-router-dom';
 import CloseIcon from '@material-ui/icons/Close';
 
-// axios.defaults.headers.common = {
-// 	"Content-Type": "application/json"
-//   }
+
 export default (props)=>{
 const BUG_TRACKER_SERVER = process.env.REACT_APP_BUG_TRACKER_SERVER;
-console.log(BUG_TRACKER_SERVER);
+const history = useHistory();
 
 	const [bugObject,setBugObject] = useState(new BugModel(props.bug));
 	const [projects,setProjects] = useState([{"name":"testProject","description":"test Description"}])
@@ -19,13 +17,12 @@ console.log(BUG_TRACKER_SERVER);
     // GET request using axios inside useEffect React hook
     axios.get(BUG_TRACKER_SERVER+'/api/project')
         .then(response => {
-          console.log(response.data);
           setProjects(response.data)
         })
         .catch(error => {console.log("There was error ", error);})
-
 // empty dependency array means this effect will only run once (like componentDidMount in classes)
 },[])
+
 
 	function inputChanged(e){
 		const {name, value} = e.target;
@@ -37,30 +34,23 @@ console.log(BUG_TRACKER_SERVER);
 	
 	function submitHandler(e){
 		e.preventDefault()
-		//console.log(bugObject);
 		if (props.title === "Edit Bug") {
-			console.log("Bug is edited");
-			axios({
-				method: 'patch',
-				url: `/api/bug/${bugObject._id}`,
-				data: qs.stringify(bugObject),
-				headers: {
-				  'content-type': 'application/x-www-form-urlencoded;charset=utf-8'
-				}
-			  })
+			axios.patch(BUG_TRACKER_SERVER + `/api/bug/${bugObject._id}`,bugObject)
+			.then(editedBug => {
+				axios.get(BUG_TRACKER_SERVER + "/api/bug").then((response) => {
+					let data = response.data.map((bug) => new BugModel(bug));
+					data = data.filter((bug) => bug.status === props.mode);
+					const sorted = data.sort((a, b) => {
+					  return a.priority - b.priority;
+					});
+					props.setBugs(sorted);
+				  });
+			})
 		} else {
-			console.log(bugObject);
 			if(!bugObject.hasOwnProperty('priority')) {
 				bugObject.priority = 1
 			  }
-			axios({
-				method: 'post',
-				url: '/api/bug',
-				data: qs.stringify(bugObject),
-				headers: {
-				  'content-type': 'application/x-www-form-urlencoded;charset=utf-8'
-				}
-			  })
+			axios.post(BUG_TRACKER_SERVER + '/api/bug', bugObject);
 		}
 	}
 
