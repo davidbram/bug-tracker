@@ -4,15 +4,8 @@ import { signIn } from '../../../Controllers/Redux/authSlice';
 import './login.css';
 import { useHistory } from 'react-router-dom';
 
-export default () => {
-  const history = useHistory();
-  const dispatch = useDispatch();
-  const [formInput, setFormInput] = useState({
-    username: '',
-    password: '',
-  });
 
-export default (props)=>{
+export default (props)=> {
     const history = useHistory();
     const dispatch = useDispatch();
     function inputChanged(e){
@@ -42,5 +35,6 @@ export default (props)=>{
                 <button className="login-btn" onClick= {() =>{history.push('/signup')}}>Create an account</button>
             </form>
         </div>
-    )
-}
+    );
+  }
+  

@@ -4,7 +4,6 @@ import qs from 'qs';
 
 const BUG_TRACKER_SERVER = process.env.REACT_APP_BUG_TRACKER_SERVER;
 
-const BUG_TRACKER_SERVER = process.env.BUG_TRACKER_SERVER; 
 const slice = createSlice({
     name:"auth",
     initialState:{
@@ -35,9 +34,6 @@ const slice = createSlice({
         state.LoggedIn = true;
         state.admin = true;
       }
-
-      // const {name,password} = action.payload;
-      // console.log(state);
     },
 
         signOut:(state)=>{

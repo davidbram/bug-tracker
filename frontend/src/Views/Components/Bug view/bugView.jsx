@@ -7,22 +7,18 @@ import { useDispatch } from 'react-redux';
 import EditPanel from '../edit delete/editPanel';
 import EditBug from '../Bug Create/bugForm';
 import axios from 'axios';
-
-
 import CloseIcon from '@material-ui/icons/Close';
-//import { markComplete } from '../../../../../backend/controllers/bug';
 
 const BUG_TRACKER_SERVER = process.env.REACT_APP_BUG_TRACKER_SERVER; 
 export default (props)=>{
     const dispatch = useDispatch();
     const bug = new BugModel(props.bug);
 
-  function deleteClicked(bugId) {
-    axios
-      .delete(BUG_TRACKER_SERVER + `/api/bug/${bugId}`)
-      .then((res) => console.log(res))
-      .catch((err) => console.log(err));
-  }
+    const [editBugDetails, setEditBugDetails] = useState({});
+    const [displayEdit, setDisplayEdit] = useState(false);
+    function editClicked() {
+      setDisplayEdit(!displayEdit);
+    }
 
     function deleteClicked(bugId){
         axios.delete(BUG_TRACKER_SERVER + `/api/bug/${bugId}`)
@@ -41,13 +37,9 @@ export default (props)=>{
         .catch(err => console.log(err));
     }
 
-  function markComplete(bugId) {
-    console.log(bugId);
-    axios
-      .patch(BUG_TRACKER_SERVER + `/api/bug/complete/${bugId}`)
-      .then((res) => console.log(res))
-      .catch((err) => console.log(err));
-  }
+
+  function handleChange() {}
+
 
     function markComplete(bugId) {
         axios.patch(BUG_TRACKER_SERVER + `/api/bug/complete/${bugId}`)

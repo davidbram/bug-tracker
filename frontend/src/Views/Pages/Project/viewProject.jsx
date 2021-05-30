@@ -8,7 +8,7 @@ const BUG_TRACKER_SERVER = process.env.REACT_APP_BUG_TRACKER_SERVER;
 
 function DisplayTable(props){
     var border={color:"black",margin:50,borderWidth:"1px", borderColor:"#aaaaaa", borderStyle:'solid'}
-    return <div>
+    return (<div>
         <table >
             <thead >
                 <tr>
@@ -61,7 +61,7 @@ export default() =>{
           });
     }, [projects.length])
 
-    return <div className="page-container">
+    return (<div className="page-container">
         <BasicTable data={projects} addProject={addProject} removeProject={removeProject} />
     </div>
   );

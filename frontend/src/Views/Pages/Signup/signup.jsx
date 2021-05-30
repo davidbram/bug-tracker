@@ -11,13 +11,6 @@ dotenv.config();
 const BUG_TRACKER_SERVER = process.env.REACT_APP_BUG_TRACKER_SERVER;
 
 function Signup() {
-  const dispatch = useDispatch();
-  const [details, setDetails] = useState({
-    username: '',
-    email: '',
-    password: '',
-    passwordc: '',
-  });
 
     const history = useHistory();
     const dispatch = useDispatch();
@@ -28,21 +21,29 @@ function Signup() {
         passwordc:""
     })
 
+    function updateDetails(event) {
+      const { name, value } = event.target;
+      setDetails({
+        ...details,
+        [name]: value,
+      });
+    }
+
   function handleSubmit(event) {
     console.log(details);
     dispatch(createUser(details));
     event.preventDefault();
   }
 
-    function handleSubmit(event){
-        console.log(details);
-        // dispatch(createUser(details));
-        axios.post(BUG_TRACKER_SERVER + "/api/register", details)
-        .then(res => {
-            history.push("/")
-        })
-        event.preventDefault();
-    }
+    // function handleSubmit(event){
+    //     console.log(details);
+    //     // dispatch(createUser(details));
+    //     axios.post(BUG_TRACKER_SERVER + "/api/register", details)
+    //     .then(res => {
+    //         history.push("/")
+    //     })
+    //     event.preventDefault();
+    // }
 
     return(
         <div className="loginBG">
