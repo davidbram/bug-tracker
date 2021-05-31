@@ -15,6 +15,7 @@
 .dashboard-card:hover {
   transition: all 0.3s;
   transform: scale(1.05);
+  background-color: lightskyblue;
 }
 
 .dashboard-card h2 {
