@@ -7,7 +7,7 @@ import { useDispatch } from 'react-redux';
 import EditPanel from '../edit delete/editPanel';
 import EditBug from '../Bug Create/bugForm';
 import axios from 'axios';
-import CloseIcon from '@material-ui/icons/Close';
+
 
 const BUG_TRACKER_SERVER = process.env.REACT_APP_BUG_TRACKER_SERVER; 
 export default (props)=>{
@@ -61,15 +61,15 @@ export default (props)=>{
         <>
         <div className='bug-view'>
             <EditPanel editClicked={editClicked} deleteClicked={deleteClicked} bugId={bug._id} />
-            <button onClick={props.clicked} className='close-btn'><CloseIcon /></button>
-            <h1>{bug.name}</h1>
+            <span style={{color:'#ef6c57',cursor:"pointer"}} onClick={props.clicked} ><i class="far fa-times-circle fa-2x close-btn"></i></span>
+            <div className="bug-view-header"><h3 style={{color:"white"}}>{bug.name}</h3></div>
             <ViewSection name='details' title='Details' info={bug.details} onEdit={handleChange} />
             <ViewSection name='steps' title='Steps' info={bug.steps} onEdit={handleChange} />
             <ViewSection name='priority' title='Priority' info={bug.priority} onEdit={handleChange} />
             <ViewSection name='creator' title='Creator' info={bug.creator} onEdit={handleChange} />
             <ViewSection name='version' title='App Version' info={bug.version} onEdit={handleChange} />
-            <ViewSection name='time' title='Time Created' info={bug.time} onEdit={handleChange} />
-            {bug.status !== "completed" && <button onClick={() => markComplete(bug._id)}>Mark Complete</button>}
+            <ViewSection name='time' title='Time Created' info={bug.time} onEdit={handleChange} />  
+            {bug.status !== "completed" && <button className="mark-complete-button" onClick={() => markComplete(bug._id)}>Mark Resolved <i class="fas fa-check-circle" /></button>}
         </div>
         {displayEdit && <EditBug title="Edit Bug" bug={bug} close={editClicked} setBugs={props.setBugs} />}
         </>

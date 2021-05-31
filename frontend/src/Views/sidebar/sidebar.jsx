@@ -18,14 +18,12 @@ export default (props)=>{
     return(
           <div className="sidebar">
               <Link className='nav-link' to=
-              '/dashboard'><h1 className='brand'>Bug-Tracker</h1></Link>
+              '/dashboard'><h1 className='brand'>Bug-Tracker <i style={{paddingLeft:"10px"}} className="fas fa-bug fa-sm" /></h1></Link>
               <ul>
               <li><Link to='/dashboard' className='nav-link'>Dashboard</Link></li>
-                  <li><Link to='/viewbugs' className='nav-link'>View Bugs</Link></li>
-                 {props.username === "admin" && <li><Link to='/create' className='nav-link'>Create Bug</Link></li>}
-                 <li><Link to="/viewproject" className="nav-link">View Projects</Link> </li>
-              
-              
+                  <li><Link to='/viewbugs' className='nav-link'>View Tickets</Link></li>
+                 <li><Link to='/create' className='nav-link'>Raise Ticket</Link></li>
+                 {props.username === "admin" && <li><Link to="/viewproject" className="nav-link">Projects</Link> </li>}     
               </ul>
                <p>Logged in as { props.username === "admin" ? "Admin" : "Developer" } <i className="fas fa-users-cog"></i></p>
               <button className='nav-link logout' onClick={SignOut}>Logout</button>

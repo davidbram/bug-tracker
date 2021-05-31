@@ -64,7 +64,7 @@ const history = useHistory();
 
 	return(
 		<div className='bug-create'>
-			{props.title === "Edit Bug" &&<button className='close-btn' onClick={props.close}><CloseIcon /></button>}
+			{props.title === "Edit Bug" &&<span style={{color:"#ef6c57"}} onClick={props.close}><i class="far fa-times-circle fa-2x close-btn"></i></span>}
 			<h1>{props.title}</h1>
 			<form onSubmit={submitHandler}>
 				<label>Name:</label>

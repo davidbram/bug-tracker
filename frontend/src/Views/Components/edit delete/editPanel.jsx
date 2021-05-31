@@ -7,16 +7,17 @@ import DeleteIcon from '@material-ui/icons/Delete';
 export default (props) => {
   return (
     <div className="edit-panel">
-      <button onClick={props.editClicked}>
-        <EditIcon />
-      </button>
-      <button
+      <span onClick={props.editClicked}>
+      <i style={{color:"#ef6c57",marginRight:"15px",cursor:"pointer"}} class="fas fa-edit fa-lg"></i>
+      </span>
+      
+      <span
         onClick={() => {
           props.deleteClicked(props.bugId);
         }}
       >
-        <DeleteIcon />
-      </button>
+        <i style={{color:"#ef6c57",cursor:"pointer"}} class="fas fa-trash-alt fa-lg"></i>
+      </span>
     </div>
   );
 };

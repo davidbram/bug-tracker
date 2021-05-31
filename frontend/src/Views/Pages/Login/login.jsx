@@ -28,7 +28,7 @@ export default (props)=> {
     return(
         <div className="loginBG">
             <form className="login-panel" onSubmit={submit}>
-                <h1>Login:</h1>
+                <h1><i style={{marginRight:"10px"}} class="fas fa-bug"></i>Login:</h1>
                 <input name="username" placeholder="Name" onChange={inputChanged} value={props.formInput.username}/>
                 <input name="password" type="password" placeholder="Password" onChange={inputChanged} value={props.formInput.password}/>
                 <button type="submit" className="login-btn">Login</button>

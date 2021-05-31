@@ -11,14 +11,16 @@
   flex-wrap: wrap;
   justify-content: center;
   color: black;
+  
 }
 
-.bug-view h1 {
-  min-width: 100%;
+.bug-view-header {
+  width: 100%;
+  height: 100px;
   text-align: center;
   color: white;
-  font-size: 3rem;
-  padding-bottom: 20px;
+  font-size: 2rem;
+  padding-bottom: 5px;
   border-bottom: 1px groove white;
 }
 
@@ -27,4 +29,8 @@
   margin: 10px;
   right: 0;
   top: 0;
+}
+
+.mark-complete-button {
+  margin: 15px auto;
 }

@@ -4,7 +4,7 @@ import CreateBug from "../Components/Bug Create/bugForm"
 const createBug = () => {
     return (
         <div className="page-container">
-            <CreateBug title="Create Bug" />
+            <CreateBug title="Raise Bug Ticket" />
         </div>
     )
 }
