@@ -26,7 +26,7 @@ export default function BasicTable(props) {
       color: theme.palette.common.white,
     },
     body: {
-      fontSize: 14,
+      fontSize: 16,
     },
   }))(TableCell);
 
@@ -61,11 +61,11 @@ export default function BasicTable(props) {
   return (
     <TableContainer component={Paper} style={{ width: 800 }}>
       <Table className={classes.table} aria-label="simple table">
-        <TableHead style={{ backgroundColor: 'var(--prim-color)' }}>
-          <TableRow style={{ backgroundColor: '#f1710' }}>
+        <TableHead style={{ backgroundColor: 'var(--prim-color)'}}>
+          <TableRow style={{ backgroundColor: '#f1710', fontSize: '16px' }}>
             <TableCell style={{ color: 'white' }}>Name</TableCell>
             <TableCell style={{ color: 'white' }} align="center">
-              Desc
+              Description
             </TableCell>
             <TableCell></TableCell>
           </TableRow>
@@ -81,8 +81,8 @@ export default function BasicTable(props) {
               
             </StyledTableRow>
           ))}
-          <TableCell><input name="name" value={newProject.name} onChange={handleNewProjectChange} /></TableCell>
-          <TableCell align="center"><input name="description" value={newProject.description} onChange={handleNewProjectChange} /></TableCell>
+          <TableCell><input name="name" placeholder="Enter project name" value={newProject.name} onChange={handleNewProjectChange} /></TableCell>
+          <TableCell align="center"><input name="description" placeholder="Enter description" value={newProject.description} onChange={handleNewProjectChange} /></TableCell>
           <TableCell align="left"><button style={{all:'unset'}} type="submit" onClick={handleFormSubmit} ><i className="fas fa-plus-circle fa-lg"></i></button></TableCell>
         </TableBody>
         
