@@ -7,7 +7,7 @@ import { useDispatch } from 'react-redux';
 import EditPanel from '../edit delete/editPanel';
 import EditBug from '../Bug Create/bugForm';
 import axios from 'axios';
-import CloseIcon from '@material-ui/icons/Close';
+
 
 const BUG_TRACKER_SERVER = process.env.REACT_APP_BUG_TRACKER_SERVER; 
 export default (props)=>{
@@ -61,8 +61,8 @@ export default (props)=>{
         <>
         <div className='bug-view'>
             <EditPanel editClicked={editClicked} deleteClicked={deleteClicked} bugId={bug._id} />
-            <button onClick={props.clicked} className='close-btn'><CloseIcon /></button>
-            <h1>{bug.name}</h1>
+            <span style={{color:'#ef6c57',cursor:"pointer"}} onClick={props.clicked} ><i class="far fa-times-circle fa-2x close-btn"></i></span>
+            <h2 style={{color:"white"}}>{bug.name}</h2><br></br>
             <ViewSection name='details' title='Details' info={bug.details} onEdit={handleChange} />
             <ViewSection name='steps' title='Steps' info={bug.steps} onEdit={handleChange} />
             <ViewSection name='priority' title='Priority' info={bug.priority} onEdit={handleChange} />
