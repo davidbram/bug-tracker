@@ -58,8 +58,8 @@ export default (props) => {
           onChange={handleChange}
           aria-label="simple tabs example"
         >
-          <Tab label="Open Bugs" style={{ position: 'static' }} />
-          <Tab label="Completed Bugs" style={{ position: 'static' }} />
+          <Tab label="Open Tickets" style={{ position: 'static' }} />
+          <Tab label="Resolved Tickets" style={{ position: 'static' }} />
         </Tabs>
       </AppBar>
       <TabPanel
