@@ -18,7 +18,7 @@ export default (props)=>{
     return(
           <div className="sidebar">
               <Link className='nav-link' to=
-              '/dashboard'><h1 className='brand'>Bug-Tracker</h1></Link>
+              '/dashboard'><h2 className='brand'>Bug-Tracker <i class="fas fa-bug" /></h2></Link>
               <ul>
               <li><Link to='/dashboard' className='nav-link'>Dashboard</Link></li>
                   <li><Link to='/viewbugs' className='nav-link'>View Tickets</Link></li>
