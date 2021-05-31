@@ -22,10 +22,8 @@ export default (props)=>{
               <ul>
               <li><Link to='/dashboard' className='nav-link'>Dashboard</Link></li>
                   <li><Link to='/viewbugs' className='nav-link'>View Bugs</Link></li>
-                 {props.username === "admin" && <li><Link to='/create' className='nav-link'>Create Bug</Link></li>}
-                 <li><Link to="/viewproject" className="nav-link">View Projects</Link> </li>
-              
-              
+                 <li><Link to='/create' className='nav-link'>Create Bug</Link></li>
+                 {props.username === "admin" && <li><Link to="/viewproject" className="nav-link">View Projects</Link> </li>}     
               </ul>
                <p>Logged in as { props.username === "admin" ? "Admin" : "Developer" } <i className="fas fa-users-cog"></i></p>
               <button className='nav-link logout' onClick={SignOut}>Logout</button>
